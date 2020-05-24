@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Sum, F
+from django.db.models import Sum
 
 
 import uuid
@@ -81,6 +81,8 @@ class Travel(models.Model):
                 self.time_to_complete = (self.arrival_date - self.departure_date).seconds
 
                 self.bus.clients_attended += len(clients_in_travel)
+
+                self.bus.revenue += self.revenue
 
                 self.bus.save()
 

@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 # from django_otp.admin import OTPAdminSite
 
-from travels.views import AvgPassagerDay, AvgTravelRevenue, ReportStations
-from buses.views import BestBus
+from travels.views import AvgPassagerDay, AvgTravelRevenue, ReportStations, AvgRevenueDay
+from buses.views import BestBus, BusRevenue
 from routes.views import ReportBusiestStations
 from clients.views import ClientsView
 
@@ -31,7 +31,9 @@ urlpatterns = [
     path('avg/', AvgPassagerDay.as_view(), name='Avg travelers per day'),
     path('travel/', ReportStations.as_view(), name='Travel Reports'),
     path('travel/avg/', AvgTravelRevenue.as_view(), name='Avg revenue'),
+    path('revenue/avg/', AvgRevenueDay.as_view(), name='Avg revenue'),
     path('buses/', BestBus.as_view(), name='Avg revenue'),
+    path('buses/revenue/', BusRevenue.as_view(), name='Avg revenue'),
     path('busiest_station/', ReportBusiestStations.as_view(), name='Avg revenue'),
     path('clients/', ClientsView.as_view(), name='Avg revenue'),
 

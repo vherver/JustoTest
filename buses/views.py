@@ -11,3 +11,7 @@ class BestBus(generics.ListAPIView):
     queryset = Buses.objects.all().order_by('-clients_attended')[:1]
     serializer_class = BusesSerializer
 
+
+class BusRevenue(generics.ListAPIView):
+    queryset = Buses.objects.all().order_by('-revenue')[:1]
+    serializer_class = BusesSerializer

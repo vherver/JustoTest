@@ -1,6 +1,6 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
-from django.db.models import Count, Avg
+from django.db.models import Avg, Sum
 
 
 from travels.models import TravelClients, Travel
@@ -45,3 +45,14 @@ class ReportStations(generics.ListAPIView):
         return queryset
 
 
+
+class AvgRevenueDay(generics.GenericAPIView):
+    def get(self, request):
+        travels = Travel.objects.filter(travel_status='FINISHED').order_by('arrival_date')
+
+        elaspsed = travels.last().arrival_date - travels.first().arrival_date
+
+        total_revenue = travels.aggregate(Sum('revenue'))['revenue__sum'] if len(travels) > 0 else 0.0
+
+        return Response(status=status.HTTP_200_OK, data={"avg": float(total_revenue) / (elaspsed.days if elaspsed.days > 0
+                                                         else 1.0)})

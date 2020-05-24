@@ -32,6 +32,12 @@ class Buses(models.Model):
 
     clients_attended = models.BigIntegerField(default=0)
 
+    revenue = models.DecimalField(verbose_name="Travel revenue",
+                                  max_digits=10,
+                                  decimal_places=2,
+                                  default=0.0,
+                                  editable=False)
+
     class Meta:
         verbose_name = 'Bus'
         verbose_name_plural = 'Buses'
