@@ -10,7 +10,7 @@ django-otp==0.9.1
 django-otp-yubikey==0.5.2
 django-phonenumber-field==3.0.1
 django-timedeltafield==0.7.10
-django-two-factor-auth==1.11.0
+django-two-factor-auth==1.12
 djangorestframework==3.11.0
 idna==2.9
 oauthlib==3.1.0
